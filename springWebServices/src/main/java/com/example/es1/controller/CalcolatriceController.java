@@ -16,4 +16,9 @@ public class CalcolatriceController {
 	public int somma(int n1, int n2) {
 		return n1 + n2;
 	}
+	
+	@GetMapping(path="/divisione")
+	public double divisione(int n1, int n2) {
+		return (double)n1 / n2;
+	}
 }
