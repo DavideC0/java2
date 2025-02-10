@@ -39,5 +39,35 @@ public class ProfessoreService {
 	public ProfessoreDTO modifica(int id, String materia) {
 		return Conversioni.daProfAProfDTO(dao.modifica(id, materia));
 	}
+	
+	public List<String> mostraCognomi() {
+		List<Professore> lista = dao.selectAll();
+		List<String> cognomi = new ArrayList<String>();
+		for (Professore prof: lista) {
+			cognomi.add(prof.getCognome());
+		}
+		return cognomi;
+	}
+	
+	public List<ProfessoreDTO> mostraMateria(String materia) {
+		List<Professore> lista = dao.selectAll();
+		List<ProfessoreDTO> dto = new ArrayList<ProfessoreDTO>();
+		for (Professore prof: lista) {
+			if (prof.getMateria().equals(materia)) {
+				dto.add(Conversioni.daProfAProfDTO(prof));
+			}
+		}
+		return dto;
+	}
+	
+	public List<ProfessoreDTO> ordinaCognomi() {
+		List<Professore> lista = dao.selectAll();
+		lista.sort(null);
+		List<ProfessoreDTO> dto = new ArrayList<ProfessoreDTO>();
+		for (Professore prof: lista) {
+			dto.add(Conversioni.daProfAProfDTO(prof));
+		}
+		return dto;
+	}
 
 }

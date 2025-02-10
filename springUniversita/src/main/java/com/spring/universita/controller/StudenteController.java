@@ -46,5 +46,22 @@ public class StudenteController {
 	public StudenteDTO modifica(@PathVariable String matricola, String indirizzo) {
 		return service.modifica(matricola, indirizzo);
 	}
-
+	
+	//visualizza elenco nomi
+	@GetMapping(path="/visualizzaNomi", produces = "application/json")
+	public List<String> visualizzaNomi() {
+		return service.mostraNomi();
+	}
+	
+	//visualizza studente più giovane
+	@GetMapping(path="/visualizzaGiovane", produces = "application/json")
+	public StudenteDTO visualizzaGiovane() {
+		return service.mostraGiovane();
+	}
+	
+	//visualizza studente iscritto da più tempo
+	@GetMapping(path="/visualizzaVecchio", produces = "application/json")
+	public StudenteDTO visualizzaIscrittoPiuTempo() {
+		return service.mostraIscritto();
+	}
 }

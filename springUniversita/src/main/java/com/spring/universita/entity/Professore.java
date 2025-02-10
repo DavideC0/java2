@@ -1,6 +1,6 @@
 package com.spring.universita.entity;
 
-public class Professore {
+public class Professore implements Comparable<Professore> {
 	
 	private int id;
 	private String nome, cognome, materia;
@@ -42,6 +42,10 @@ public class Professore {
 	public String toString() {
 		return "Professore [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", materia=" + materia + "]";
 	}
+	@Override
+    public int compareTo(Professore other) {
+        return this.cognome.compareTo(other.cognome);
+    }
 	
 
 }

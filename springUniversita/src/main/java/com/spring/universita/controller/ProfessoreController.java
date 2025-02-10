@@ -47,4 +47,22 @@ public class ProfessoreController {
 		return service.modifica(id, materia);
 	}
 	
+	//visualizza cognomi
+	@GetMapping(path="/visualizzaCognomi", produces = "application/json")
+	public List<String> visualizzaCognomi() {
+		return service.mostraCognomi();
+	}
+	
+	//visualizza per materia specificata
+	@GetMapping(path="/visualizzaMateria/{materia}", produces = "application/json")
+	public List<ProfessoreDTO> visualizzaByMateria(@PathVariable String materia) {
+		return service.mostraMateria(materia);
+	}
+	
+	//visualizza ordinati per cognomi
+	@GetMapping(path="/ordinaCognomi", produces = "application/json")
+	public List<ProfessoreDTO> visualizzaByCognome() {
+		return service.ordinaCognomi();
+	}
+	
 }

@@ -39,4 +39,35 @@ private DAOStudente dao = new DAOStudente();
 	public StudenteDTO modifica(String id, String indirizzo) {
 		return Conversioni.daStudenteAStudenteDTO(dao.modifica(id, indirizzo));
 	}
+	
+	public List<String> mostraNomi() {
+		List<Studente> lista = dao.selectAll();
+		List<String> nomi = new ArrayList<String>();
+		for (Studente stud: lista) {
+			nomi.add(stud.getNome());
+		}
+		return nomi;
+	}
+	
+	public StudenteDTO mostraGiovane() {
+		List<Studente> lista = dao.selectAll();
+		Studente giovane = lista.get(0);
+		for (Studente stud: lista) {
+			if (stud.getAnnoNascita()>giovane.getAnnoNascita()) {
+				giovane = stud;
+			}
+		}
+		return Conversioni.daStudenteAStudenteDTO(giovane);
+	}
+	
+	public StudenteDTO mostraIscritto() {
+		List<Studente> lista = dao.selectAll();
+		Studente vecchio = lista.get(0);
+		for (Studente stud: lista) {
+			if (stud.getAnnoImmatricolazione()<vecchio.getAnnoImmatricolazione()) {
+				vecchio = stud;
+			}
+		}
+		return Conversioni.daStudenteAStudenteDTO(vecchio);
+	}
 }
