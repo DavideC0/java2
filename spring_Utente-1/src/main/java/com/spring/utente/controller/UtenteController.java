@@ -2,6 +2,7 @@ package com.spring.utente.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.utente.dto.UtenteDTO;
-import com.spring.utente.entity.Utente;
 import com.spring.utente.service.UtenteService;
 
 @RestController
 @RequestMapping(path="/servizi")
 public class UtenteController {
 
-	private UtenteService service = new UtenteService();
+	@Autowired
+	private UtenteService service;
 	
 	@GetMapping(path="/registra", consumes = "application/json")
 	public void registra(@RequestBody UtenteDTO dto) {

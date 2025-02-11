@@ -3,15 +3,19 @@ package com.spring.utente.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.spring.utente.dao.DAOUtente;
 import com.spring.utente.dto.NomeCognomeDTO;
 import com.spring.utente.dto.UtenteDTO;
 import com.spring.utente.entity.Utente;
 import com.spring.utente.utility.Conversioni;
 
-public class UtenteService {
-
-	private DAOUtente dao = new DAOUtente(); //questo costruttore crea la mappa vuota di utenti
+@Service
+public class UtenteServiceImpl implements UtenteService {
+	@Autowired
+	private DAOUtente dao; //questo costruttore crea la mappa vuota di utenti
 	
 	public void registra(UtenteDTO dto) {
 		//trasformo da DTO ad entity

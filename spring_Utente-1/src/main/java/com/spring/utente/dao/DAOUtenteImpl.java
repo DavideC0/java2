@@ -5,11 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.spring.utente.entity.Utente;
 
 
-
-public class DAOUtente {
+@Repository
+public class DAOUtenteImpl implements DAOUtente {
 	
 	private Map<Integer, Utente> mappa = new HashMap<>();
 
