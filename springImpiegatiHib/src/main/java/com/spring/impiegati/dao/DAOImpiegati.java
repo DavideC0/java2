@@ -10,7 +10,7 @@ import com.spring.impiegati.entity.Impiegato;
 public interface DAOImpiegati extends JpaRepository<Impiegato, Integer>{
 
 	@Query(nativeQuery = true, value="select * from impiegato where salario > :valore")
-	public List<Impiegato> getSalarioMaggiore(int valore);
+	public List<Impiegato> getSalarioMaggiore(double valore);
 	
 	@Query(nativeQuery = true, value="select * from impiegato order by cognome")
 	public List<Impiegato> getOrdinatiByCognome();

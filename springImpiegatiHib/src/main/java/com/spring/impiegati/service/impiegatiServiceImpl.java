@@ -65,26 +65,42 @@ public class impiegatiServiceImpl implements ImpiegatiService {
 
 	@Override
 	public List<String> cercaNominativi() {
-		// TODO Auto-generated method stub
-		return null;
+		List<String> lista_n = new ArrayList<String>();
+		List<Impiegato> entity = dao.findAll();
+		for (Impiegato e: entity) {
+			lista_n.add(e.getNome() + " " + e.getCognome());
+		}
+		return lista_n;
 	}
 
 	@Override
 	public List<ImpiegatoDTO> getSalarioMaggiore(double valore) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Impiegato> entity = dao.getSalarioMaggiore(valore);
+		List<ImpiegatoDTO> dto = new ArrayList<ImpiegatoDTO>();
+		for (Impiegato e: entity) {
+			dto.add(new ImpiegatoDTO(e.getMatricola(), e.getNome(), e.getCognome(), e.getSalario()));
+		}
+		return dto;
 	}
 
 	@Override
 	public List<ImpiegatoDTO> getOrdinatiByCognome() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Impiegato> entity = dao.getOrdinatiByCognome();
+		List<ImpiegatoDTO> dto = new ArrayList<ImpiegatoDTO>();
+		for (Impiegato e: entity) {
+			dto.add(new ImpiegatoDTO(e.getMatricola(), e.getNome(), e.getCognome(), e.getSalario()));
+		}
+		return dto;
 	}
 
 	@Override
 	public List<ImpiegatoDTO> getOrdinatiBySalario() {
-		// TODO Auto-generated method stub
-		return null;
+		List<Impiegato> entity = dao.getOrdinatiBySalario();
+		List<ImpiegatoDTO> dto = new ArrayList<ImpiegatoDTO>();
+		for (Impiegato e: entity) {
+			dto.add(new ImpiegatoDTO(e.getMatricola(), e.getNome(), e.getCognome(), e.getSalario()));
+		}
+		return dto;
 	}
 
 }
